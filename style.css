@@ -6,7 +6,6 @@
 .rowContainer {
     flex: 1 1 auto;
     display: flex;
-    height: 50px;
 }
 
 .square {
