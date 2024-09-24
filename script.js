@@ -16,3 +16,8 @@ function createGrid() {
 const container = document.querySelector("#container");
 
 createGrid();
+
+container.addEventListener("mouseover", (event) => {
+    let target = event.target;
+    target.setAttribute("style", "background: blue");
+});
