@@ -1,17 +1,17 @@
-let gridContainer = document.querySelector("#container");
+let gridContainer = document.querySelector("#gridContainer");
 
-function createGrid() {
+function createGrid(size) {
 
-    for (let i = 0; i < 16; i++) {
-        createGridRow(gridContainer);
+    for (let i = 0; i < size; i++) {
+        createGridRow(gridContainer, size);
     }
 }
 
-function createGridRow(parent) {
+function createGridRow(parent, size) {
     const gridRow = document.createElement("div");
     gridRow.classList.add("gridRow");
 
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < size; i++) {
         createGridCell(gridRow);
     }
 
@@ -24,11 +24,37 @@ function createGridCell(parent) {
     parent.append(gridCell);
 }
 
-createGrid();
+createGrid(16);
 
-//TODO this affects the gridRow divs too, either add conditional, or maybe resizing gridRows will solve it
 function changeColour(event) {
     event.target.classList.add("hoveredOver");
 }
 
+
+
 gridContainer.addEventListener("mouseover", changeColour);
+
+const resetButton = document.querySelector("#resetButton");
+
+function resetGrid() {
+    let newSize = "";
+
+    while (newSize > 100 || !Number.isInteger(newSize)) {
+        newSize = Number(prompt("Enter the size of the new grid (max 100):"));
+    }
+
+    gridContainer.innerHTML = "";
+    createGrid(newSize);
+}
+
+/*
+function resetClick() {
+    resetGrid()
+}
+
+resetButton.addEventListener("click", resetClick)
+*/
+
+resetButton.addEventListener("click", () => {
+    resetGrid();
+})
