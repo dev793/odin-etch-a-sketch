@@ -1,4 +1,5 @@
-let gridContainer = document.querySelector("#gridContainer");
+const gridContainer = document.querySelector("#gridContainer");
+const resetButton = document.querySelector("#resetButton");
 
 function createGrid(size) {
 
@@ -15,7 +16,7 @@ function createGridRow(parent, size) {
         createGridCell(gridRow);
     }
 
-    parent.append(gridRow)
+    parent.append(gridRow);
 }
 
 function createGridCell(parent) {
@@ -23,18 +24,6 @@ function createGridCell(parent) {
     gridCell.classList.add("gridCell");
     parent.append(gridCell);
 }
-
-createGrid(16);
-
-function changeColour(event) {
-    event.target.classList.add("hoveredOver");
-}
-
-
-
-gridContainer.addEventListener("mouseover", changeColour);
-
-const resetButton = document.querySelector("#resetButton");
 
 function resetGrid() {
     let newSize = "";
@@ -47,14 +36,15 @@ function resetGrid() {
     createGrid(newSize);
 }
 
-/*
-function resetClick() {
-    resetGrid()
+function changeColour(event) {
+    event.target.classList.add("hoveredOver");
 }
 
-resetButton.addEventListener("click", resetClick)
-*/
+
+gridContainer.addEventListener("mouseover", changeColour);
 
 resetButton.addEventListener("click", () => {
     resetGrid();
-})
+});
+
+createGrid(16);
