@@ -9,3 +9,7 @@
     border: 2px solid red;
 }
 
+.hoveredOver {
+    background-color: black;
+}
+

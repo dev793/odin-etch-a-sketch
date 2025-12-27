@@ -1,5 +1,6 @@
+let gridContainer = document.querySelector("#container");
+
 function createGrid() {
-    const gridContainer = document.querySelector("#container");
 
     for (let i = 0; i < 16; i++) {
         createGridRow(gridContainer);
@@ -24,3 +25,10 @@ function createGridCell(parent) {
 }
 
 createGrid();
+
+//TODO this affects the gridRow divs too, either add conditional, or maybe resizing gridRows will solve it
+function changeColour(event) {
+    event.target.classList.add("hoveredOver");
+}
+
+gridContainer.addEventListener("mouseover", changeColour);
